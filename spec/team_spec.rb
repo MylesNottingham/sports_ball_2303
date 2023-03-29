@@ -47,55 +47,48 @@ RSpec.describe Team do
     end
   end
 
-  describe "#long_term_players" do
-    it "can return long term players" do
+  describe "Iterations 3 & 4" do
+    before(:each) do
       @team.add_player(@player_1)
       @team.add_player(@player_2)
       @team.add_player(@player_3)
       @team.add_player(@player_4)
-
-      expect(@team.roster).to eq([@player_1, @player_2, @player_3, @player_4])
-      expect(@team.player_count).to eq(4)
-      expect(@team.long_term_players).to eq([@player_1, @player_3])
     end
-  end
 
-  describe "#short_term_players" do
-    it "can return short term players" do
-      @team.add_player(@player_1)
-      @team.add_player(@player_2)
-      @team.add_player(@player_3)
-      @team.add_player(@player_4)
-
-      expect(@team.roster).to eq([@player_1, @player_2, @player_3, @player_4])
-      expect(@team.player_count).to eq(4)
-      expect(@team.short_term_players).to eq([@player_2, @player_4])
+    describe "#long_term_players" do
+      it "can return long term players" do
+        expect(@team.long_term_players).to eq([@player_1, @player_3])
+      end
     end
-  end
 
-  describe "#total_value" do
-    it "can return total value" do
-      @team.add_player(@player_1)
-      @team.add_player(@player_2)
-      @team.add_player(@player_3)
-      @team.add_player(@player_4)
-
-      expect(@team.roster).to eq([@player_1, @player_2, @player_3, @player_4])
-      expect(@team.player_count).to eq(4)
-      expect(@team.total_value).to eq(85200000)
+    describe "#short_term_players" do
+      it "can return short term players" do
+        expect(@team.short_term_players).to eq([@player_2, @player_4])
+      end
     end
-  end
 
-  describe "#details" do
-    it "can return details" do
-      @team.add_player(@player_1)
-      @team.add_player(@player_2)
-      @team.add_player(@player_3)
-      @team.add_player(@player_4)
+    describe "#total_value" do
+      it "can return total value" do
+        expect(@team.total_value).to eq(85200000)
+      end
+    end
 
-      expect(@team.roster).to eq([@player_1, @player_2, @player_3, @player_4])
-      expect(@team.player_count).to eq(4)
-      expect(@team.details).to eq({ "total_value" => 85200000, "player_count" => 4 })
+    describe "#details" do
+      it "can return details" do
+        expect(@team.details).to eq({ "total_value" => 85200000, "player_count" => 4 })
+      end
+    end
+
+    describe "#average_cost_of_player" do
+      it "can return average cost of player" do
+        expect(@team.average_cost_of_player).to eq("$21,300,000")
+      end
+    end
+
+    describe "#players_by_last_name" do
+      it "can return players by last name alphabetically" do
+        expect(@team.players_by_last_name).to eq("DeNunez, McClennan, Palledorous, Porter")
+      end
     end
   end
 end
