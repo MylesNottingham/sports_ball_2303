@@ -3,11 +3,10 @@ require "./lib/player"
 
 RSpec.describe Player do
   before(:each) do
-    @player = Player.new("Michael Palledorous" , 1000000, 36)
+    @player = Player.new("Michael Palledorous", 1000000, 36)
   end
 
   describe "#initialize" do
-
     it "exists" do
       expect(@player).to be_a Player
     end
@@ -31,14 +30,16 @@ RSpec.describe Player do
     it "has a total cost" do
       expect(@player.total_cost).to eq(36000000)
     end
-  end
 
-  describe "#set_nickname!" do
     it "has no nickname by default" do
       expect(@player.nickname).to eq(nil)
     end
+  end
 
+  describe "#set_nickname!" do
     it "can set a nickname" do
+      expect(@player.nickname).to eq(nil)
+
       @player.set_nickname!("Squints")
 
       expect(@player.nickname).to eq("Squints")
