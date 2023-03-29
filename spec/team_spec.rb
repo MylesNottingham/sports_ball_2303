@@ -20,4 +20,31 @@ RSpec.describe Team do
       expect(@team.player_count).to eq(0)
     end
   end
+
+  describe "#add_player" do
+    before(:each) do
+      @player_1 = Player.new("Michael Palledorous", 1000000, 36)
+      @player_2 = Player.new("Kenny DeNunez", 500000, 24)
+    end
+
+    it "the players exist" do
+      expect(@player_1).to be_a Player
+      expect(@player_2).to be_a Player
+    end
+
+    it "can add players" do
+      expect(@team.roster).to eq([])
+      expect(@team.player_count).to eq(0)
+
+      @team.add_player(@player_1)
+
+      expect(@team.roster).to eq([@player_1])
+      expect(@team.player_count).to eq(1)
+
+      @team.add_player(@player_2)
+
+      expect(@team.roster).to eq([@player_1, @player_2])
+      expect(@team.player_count).to eq(2)
+    end
+  end
 end
