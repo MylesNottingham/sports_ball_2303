@@ -3,7 +3,8 @@ class Player
               :last_name,
               :monthly_cost,
               :contract_length,
-              :total_cost
+              :total_cost,
+              :nickname
 
   def initialize(name, monthly_cost, contract_length)
     @first_name = name.split[0]
@@ -11,5 +12,10 @@ class Player
     @monthly_cost = monthly_cost
     @contract_length = contract_length
     @total_cost = monthly_cost * contract_length
+    @nickname = nil
+  end
+
+  def set_nickname!(nickname)
+    @nickname = nickname
   end
 end
