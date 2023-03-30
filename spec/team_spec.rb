@@ -63,7 +63,7 @@ RSpec.describe Team do
 
     describe "#short_term_players" do
       it "can return short term players" do
-        expect(@team.short_term_players).to eq([@player_2, @player_4])
+        expect(@team.short_term_players).to eq([@player_4, @player_2])
       end
     end
 

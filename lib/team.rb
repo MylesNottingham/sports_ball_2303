@@ -20,7 +20,7 @@ class Team
   end
 
   def short_term_players
-    @roster.find_all { |player| player.contract_length <= 24 }
+    @roster.find_all { |player| player.contract_length <= 24 }.reverse
   end
 
   def total_value
